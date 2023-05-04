@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+nav {
+  background-color: #c27f7f;
+  height: 70px;
+  width: 110%;
+
+}
+nav ul li {
+  float: left;
+  height: 100%;
+}
+
+nav ul li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 20px;
+  line-height: 50px;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+
+
+
+
+
+
+
+

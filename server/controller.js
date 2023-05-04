@@ -2,6 +2,7 @@ const Event = require('./database/model.js')
 const selectAllEvent = async function(req,res){
     try{
         const events = await Event.find({})
+        console.log("hello")
         res.json(events)
     }catch(err){
         res.json(err)
@@ -18,7 +19,7 @@ const createEvent = async function(req,res){
 const deleteEvent = async function(req,res){
     try{
         const deleteEvent = await Event.deleteOne({_id:req.params.id})
-        res.json(deleteEvent)
+        res.data(deleteEvent)
     }catch(err){
         res.json(err)
 }
