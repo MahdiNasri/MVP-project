@@ -2,7 +2,15 @@ const Event = require('./database/model.js')
 const selectAllEvent = async function(req,res){
     try{
         const events = await Event.find({})
-        console.log("hello")
+        res.json(events)
+    }catch(err){
+        res.json(err)
+    }
+}
+const selectAllEventByCategory = async function(req,res){
+    try{
+        const events = await Event.find({"category":req.body.category})
+        console.log(events)
         res.json(events)
     }catch(err){
         res.json(err)
@@ -38,5 +46,6 @@ module.exports = {
     createEvent,
     deleteEvent,
     updateEvent,
+    selectAllEventByCategory
 
 }

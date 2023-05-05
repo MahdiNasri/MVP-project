@@ -1,16 +1,15 @@
 
 import './App.css';
+import Events from './components/Events';
+import Home from './components/Home';
+import Nav from './components/Nav';
 
 function App() {
   return (
     <div>
-    <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">add event</a></li>
-      </ul>
-      </nav>
-      <div className="App">WELCOM TO JAW TWENSA</div>
+    <Nav/>
+    <Home/>
+    <Events/>
       </div>
   );
 }
