@@ -12,7 +12,7 @@ const Home = () => {
        
     </div>
     <div className="home-img">
-    <Tilt options={{ max: 35 , scale:1 }}>
+    <Tilt options={{ max: 35 , scale:1.02 }}>
         <img src={bg} />
         </Tilt>
     </div>

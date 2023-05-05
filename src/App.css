@@ -298,3 +298,33 @@ section {
   
 
 }
+/* about cs */
+
+.About_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.icon-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.icon img {
+  width: 50%;
+}
+
+.icon h3 {
+  margin-top: 20px;
+  text-align: center;
+}

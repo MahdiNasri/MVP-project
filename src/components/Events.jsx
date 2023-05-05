@@ -1,15 +1,41 @@
 import React, { useEffect, useState } from 'react'
+import Modal from 'react-modal';
 import axios from 'axios'
 
 
 
 const Events = () => {
     const [events,setEvents]=useState([])
+    const [oneEvent,setOneEvent]=useState([])
     const [update,setUpdate]=useState(false)
     const [show,setShow]=useState(false)
     const [date,setDate]=useState(new Date())
+    const [modalIsOpen, setIsOpen]  = useState(false)
   
+    let subtitle;
+    const customStyles = {
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+      },
+    }; 
 
+    function openModal() {
+      setIsOpen(true);
+    }
+  
+    function afterOpenModal() {
+      // references are now sync'd and can be accessed.
+      subtitle.style.color = '#f00';
+    }
+  
+    function closeModal() {
+      setIsOpen(false);
+    }
     const fetch = () => (
         axios.get('http://localhost:3001/api/events').then((response)=>{
             setEvents(response.data)
@@ -28,13 +54,16 @@ const deleted = (id) => {
     console.log(err)
   })
 }
-
+ 
 const updated = (id) => {
   axios.put(`http://localhost:3001/api/events/${id}`,{date:date}).then((response)=>{
     setUpdate(!update)
   }).catch((err)=>{
     console.log(err)
   })
+}
+const OneElement = (id)=>{
+  
 }
   return (
     <div>
@@ -70,8 +99,24 @@ const updated = (id) => {
             }}>UPDATE</button>
             </div>
             )}
-                    <button className='outline-btn'>SEE MORE !</button>  
-        </div>)}
+                    <button className='outline-btn' onClick={openModal} >SEE MORE !</button>  
+                    <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}> DETAILS </h2>
+      
+    
+      <button onClick={closeModal}>CLOSE</button>
+        
+      </Modal>
+        </div>
+        
+        
+        )}
 
        
     </section>
@@ -109,7 +154,20 @@ const updated = (id) => {
             </div>
             )}
 
-                    <button className='outline-btn'>SEE MORE !</button>  
+                    <button className='outline-btn' onClick={openModal}>SEE MORE !</button>  
+                    <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}> DETAILS </h2>
+      
+    
+      <button onClick={closeModal}>CLOSE</button>
+        
+      </Modal>
         </div>)}
 
        
@@ -150,7 +208,20 @@ const updated = (id) => {
             </div>
             )}
 
-                    <button className='outline-btn'>SEE MORE !</button>   
+                    <button className='outline-btn' onClick={openModal}>SEE MORE !</button>   
+                    <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}> DETAILS </h2>
+      
+    
+      <button onClick={closeModal}>CLOSE</button>
+        
+      </Modal>
                     
         </div>)
       

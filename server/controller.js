@@ -9,7 +9,16 @@ const selectAllEvent = async function(req,res){
 }
 const selectAllEventByCategory = async function(req,res){
     try{
-        const events = await Event.find({"category":req.body.category})
+        const events = await Event.find({category:req.body.category})
+        console.log(events)
+        res.json(events)
+    }catch(err){
+        res.json(err)
+    }
+}
+const selectOneEvent = async function(req,res){
+    try{
+        const events = await Event.find({_id:req.params.id})
         console.log(events)
         res.json(events)
     }catch(err){
@@ -46,6 +55,7 @@ module.exports = {
     createEvent,
     deleteEvent,
     updateEvent,
-    selectAllEventByCategory
+    selectAllEventByCategory,
+    selectOneEvent
 
 }
